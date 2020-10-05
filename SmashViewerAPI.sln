@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmashViewerAPI", "SmashView
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesLibrary", "EntitiesLibrary\EntitiesLibrary.csproj", "{FCD1ED23-67EE-49E9-8DD0-8455555A8252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalibrary", "..\Datalibrary\Datalibrary.csproj", "{EF392E8A-4694-4CE4-A3BB-7FEFC2F9CCC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{0B272030-2554-4C0B-A1B2-011A698F5592}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{FCD1ED23-67EE-49E9-8DD0-8455555A8252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCD1ED23-67EE-49E9-8DD0-8455555A8252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCD1ED23-67EE-49E9-8DD0-8455555A8252}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF392E8A-4694-4CE4-A3BB-7FEFC2F9CCC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF392E8A-4694-4CE4-A3BB-7FEFC2F9CCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF392E8A-4694-4CE4-A3BB-7FEFC2F9CCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF392E8A-4694-4CE4-A3BB-7FEFC2F9CCC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B272030-2554-4C0B-A1B2-011A698F5592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B272030-2554-4C0B-A1B2-011A698F5592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B272030-2554-4C0B-A1B2-011A698F5592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B272030-2554-4C0B-A1B2-011A698F5592}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
