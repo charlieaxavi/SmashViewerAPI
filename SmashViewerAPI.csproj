@@ -7,12 +7,16 @@
   <ItemGroup>
     <Compile Remove="DataLibrary\**" />
     <Compile Remove="EntitiesLibrary\**" />
+    <Compile Remove="SmashViewerClient\**" />
     <Content Remove="DataLibrary\**" />
     <Content Remove="EntitiesLibrary\**" />
+    <Content Remove="SmashViewerClient\**" />
     <EmbeddedResource Remove="DataLibrary\**" />
     <EmbeddedResource Remove="EntitiesLibrary\**" />
+    <EmbeddedResource Remove="SmashViewerClient\**" />
     <None Remove="DataLibrary\**" />
     <None Remove="EntitiesLibrary\**" />
+    <None Remove="SmashViewerClient\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +27,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="DataLibrary\DataLibrary.csproj" />
+    <ProjectReference Include="EntitiesLibrary\EntitiesLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 

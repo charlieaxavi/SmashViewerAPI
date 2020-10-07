@@ -2,7 +2,9 @@
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 
 namespace EntitiesLibrary.ExcelcConverter.Methods
 {
@@ -23,14 +25,15 @@ namespace EntitiesLibrary.ExcelcConverter.Methods
                     return null;
                 }
 
-                if (colCount >= 5)
+                if (colCount >= 30)
                 {
-                    for (int row = 2; row <= rowCount.Value; row++)
+                    for (int row = 7; row <= rowCount.Value; row++)
                     {
                         line = new ArticuloExcel();
-                        for (int col = 0; col <= 12; col++)
+                        string[] dateSplit = null;
+                        for (int col = 0; col <= 31; col++)
                         {
-                            if (row > 1)
+                            if (row > 6)
                             {
                                 var itemfound = excelWorksheet.Cells[row, 2].Value?.ToString() ?? "";
                                 if (itemfound.Trim().Length > 0)
@@ -53,10 +56,8 @@ namespace EntitiesLibrary.ExcelcConverter.Methods
                                             line.UPC = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
                                             break;
                                         case 6:
-                                            if (DateTime.TryParse(excelWorksheet.Cells[row, col].Value.ToString(), out dateValue))
-                                                line.CreateDate = DateTime.Parse(excelWorksheet.Cells[row, col].Value.ToString());
-                                            else
-                                                line.CreateDate = DateTime.FromOADate(Double.Parse(excelWorksheet.Cells[row, col].Value.ToString()));
+                                            dateSplit = excelWorksheet.Cells[row, col].Value.ToString().Split("/");
+                                            line.CreateDate = Convert.ToDateTime(string.Concat(dateSplit[2], "-", dateSplit[0], "-", dateSplit[1]));
                                             break;
                                         case 7:
                                             line.ItemNbr = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
@@ -86,48 +87,57 @@ namespace EntitiesLibrary.ExcelcConverter.Methods
                                                 line.ItemStatus = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
                                             break;
                                         case 16:
-                                            line.EffectiveDate = Convert.ToDateTime(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.ItemType = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
                                             break;
                                         case 17:
-                                            line.StoreSpecificCost = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            dateSplit = excelWorksheet.Cells[row, col].Value.ToString().Split("/");
+                                            line.EffectiveDate = Convert.ToDateTime(string.Concat(dateSplit[2], "-", dateSplit[0], "-", dateSplit[1]));
                                             break;
                                         case 18:
-                                            line.StoreSpecificCostUSDollars = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.StoreSpecificCost = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
                                             break;
                                         case 19:
-                                            line.VNPKQty = Convert.ToInt32(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.StoreSpecificCostUSDollars = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
                                             break;
                                         case 20:
-                                            line.WHPKQty = Convert.ToInt32(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.VNPKQty = Convert.ToInt32(excelWorksheet.Cells[row, col].Value?.ToString());
                                             break;
                                         case 21:
-                                            line.StoreSpecificRetail = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.WHPKQty = Convert.ToInt32(excelWorksheet.Cells[row, col].Value?.ToString());
                                             break;
                                         case 22:
-                                            line.StoreSpecificRetailUSDollars = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.StoreSpecificRetail = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
                                             break;
                                         case 23:
-                                            line.CountryCode = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
+                                            line.StoreSpecificRetailUSDollars = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
                                             break;
                                         case 24:
-                                            line.ObsoleteDate = Convert.ToDateTime(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.CountryCode = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
                                             break;
                                         case 25:
-                                            line.ExpirationDate = Convert.ToDateTime(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            dateSplit = excelWorksheet.Cells[row, col].Value.ToString().Split("/");
+                                            line.ObsoleteDate = Convert.ToDateTime(string.Concat(dateSplit[2], "-", dateSplit[0], "-", dateSplit[1]));
                                             break;
                                         case 26:
-                                            line.StatusChgDate = Convert.ToDateTime(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            dateSplit = excelWorksheet.Cells[row, col].Value.ToString().Split("/");
+                                            line.ExpirationDate = Convert.ToDateTime(string.Concat(dateSplit[2], "-", dateSplit[0], "-", dateSplit[1]));
                                             break;
                                         case 27:
-                                            line.SizeDesc = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
+                                            dateSplit = excelWorksheet.Cells[row, col].Value.ToString().Split("/");
+                                            line.StatusChgDate = Convert.ToDateTime(string.Concat(dateSplit[2], "-", dateSplit[0], "-", dateSplit[1]));
                                             break;
                                         case 28:
-                                            line.LastChangeDate = Convert.ToDateTime(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            line.SizeDesc = excelWorksheet.Cells[row, col].Value?.ToString() ?? "";
                                             break;
                                         case 29:
-                                            line.ExchangeRateDate = Convert.ToDateTime(excelWorksheet.Cells[row, col].Value?.ToString());
+                                            dateSplit = excelWorksheet.Cells[row, col].Value.ToString().Split("/");
+                                            line.LastChangeDate = Convert.ToDateTime(string.Concat(dateSplit[2], "-", dateSplit[0], "-", dateSplit[1]));
                                             break;
                                         case 30:
+                                            dateSplit = excelWorksheet.Cells[row, col].Value.ToString().Split("/");
+                                            line.ExchangeRateDate = Convert.ToDateTime(string.Concat(dateSplit[2], "-", dateSplit[0], "-", dateSplit[1]));
+                                            break;
+                                        case 31:
                                             line.ExchangeRateUsed = Convert.ToDecimal(excelWorksheet.Cells[row, col].Value?.ToString());
                                             break;
                                     }

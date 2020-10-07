@@ -1,0 +1,47 @@
+﻿@page
+@model SmashViewerClient.Pages.InitialData.IndexModel
+@{
+}
+<div class="container row p-0 m-0">
+    <div class="col-12">
+        <h2 class="text-info">Inserting Files</h2>
+    </div>
+
+   
+    
+    <div class="col-12 border p-3 mt-3">
+        <form enctype="multipart/form-data" method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="dataFile.Files"></label>
+                    <input asp-for="dataFile.Files" type="file" class="form-control">
+                </div>
+                <div class="col-6">
+                    <label asp-for="dataFile.DocumentDate"></label>
+                    <input asp-for="dataFile.DocumentDate" class="form-control" />
+                    <span asp-validation-for="dataFile.DocumentDate" class="text-danger"></span>
+                </div>
+            </div>
+                <div class="form-group row">
+                    
+                </div>
+                <input asp-page-handler="FileFirst" class="btn btn-primary offset-11" type="submit" value="Upload">
+        </form>
+
+        @*<form enctype="multipart/form-data" method="post">
+            <dl>
+                <dt>
+                    <label asp-for="dataFile.Files"></label>
+                </dt>
+                <dd>
+                    <input asp-for="dataFile.Files" type="file">
+                </dd>
+            </dl>
+            <input asp-page-handler="FileSecond" class="btn" type="submit" value="Upload">
+        </form>*@
+    </div>
+</div>
+@section Scripts{ 
+<partial name="_ValidationScriptsPartial"/>
+}
